@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Create account</title>
+  <link rel="stylesheet" href="Calculator.css" />
+</head>
+<body>
+  <div class="auth-card">
+    <h2>Create account</h2>
+    <form id="signupForm">
+      <input id="signupUsername" placeholder="Username" required />
+      <input id="signupPassword" type="password" placeholder="Password" required />
+      <div class="auth-actions">
+        <button type="submit">Create</button>
+        <button type="button" id="cancelBtn">Cancel</button>
+      </div>
+      <div id="signupMessage" class="auth-message"></div>
+    </form>
+  </div>
+
+  <script>
+    function loadUsers() {
+      const raw = localStorage.getItem('calc_users');
+      return raw ? JSON.parse(raw) : {};
+    }
+    function saveUsers(users) { localStorage.setItem('calc_users', JSON.stringify(users)); }
+
+    const signupForm = document.getElementById('signupForm');
+    const signupMessage = document.getElementById('signupMessage');
+    const cancelBtn = document.getElementById('cancelBtn');
+
+    signupForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const u = document.getElementById('signupUsername').value.trim();
+      const p = document.getElementById('signupPassword').value;
+      if (!u || !p) { signupMessage.textContent = 'Provide username and password'; return; }
+      const users = loadUsers();
+      if (users[u]) { signupMessage.textContent = 'Username already exists'; return; }
+      users[u] = { password: p };
+      saveUsers(users);
+      signupMessage.textContent = 'Account created — you can close this window and login.';
+      setTimeout(() => window.close(), 900);
+    });
+
+    cancelBtn.addEventListener('click', () => window.close());
+  </script>
+</body>
+</html>

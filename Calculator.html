@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simple Calculator</title>
+  <link rel="stylesheet" href="Calculator.css" />
+</head>
+<body>
+  <div id="auth-container">
+    <div class="auth-card">
+      <h2>Sign in</h2>
+      <form id="loginForm">
+        <input id="loginUsername" placeholder="Username" required />
+        <input id="loginPassword" type="password" placeholder="Password" required />
+        <div class="auth-actions">
+          <button type="submit">Login</button>
+          <button type="button" id="openSignup">Create account</button>
+        </div>
+        <div id="authMessage" class="auth-message"></div>
+      </form>
+    </div>
+  </div>
+
+  <div id="calculator-container" style="display:none;">
+  <div class="calculator">
+    <div class="calc-header">
+      <div class="user-info">Signed in as <span id="currentUser"></span></div>
+      <button id="logoutBtn" class="clear">Log out</button>
+    </div>
+    <input type="text" id="display" value="0" readonly />
+
+    <div class="buttons">
+      <button class="clear" data-action="clear">C</button>
+      <button data-action="delete">DEL</button>
+      <button data-value="%">%</button>
+      <button class="operator" data-value="/">÷</button>
+
+      <button data-value="7">7</button>
+      <button data-value="8">8</button>
+      <button data-value="9">9</button>
+      <button class="operator" data-value="*">×</button>
+
+      <button data-value="4">4</button>
+      <button data-value="5">5</button>
+      <button data-value="6">6</button>
+      <button class="operator" data-value="-">−</button>
+
+      <button data-value="1">1</button>
+      <button data-value="2">2</button>
+      <button data-value="3">3</button>
+      <button class="operator" data-value="+">+</button>
+
+      <button class="zero" data-value="0">0</button>
+      <button data-value=".">.</button>
+      <button class="equals" data-action="calculate">=</button>
+    </div>
+  </div>
+  </div>
+
+  <script src="Calculator.js"></script>
+</body>
+</html>
