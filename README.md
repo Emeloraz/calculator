@@ -1,5 +1,7 @@
 Calculator Web App
 
+**🔗 Live Demo:** (https://emeloraz.github.io/calculator/Calculator.html)
+
 A simple, responsive calculator web app built with vanilla 
 HTML, CSS, and JavaScript. Users sign in through a login page
 and are then taken to a fully working calculator.
